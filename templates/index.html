@@ -1,0 +1,15 @@
+    <!DOCTYPE html>
+    <html>
+        <head>
+            <meta charset=utf-8 />
+            <title></title>
+            <link rel="stylesheet" type="text/css" media="screen" href="css/master.css" />
+        </head>
+        <body>
+        {% if snowData %}
+            {{snowData.lastSnowReport}} was last reported on {{snowData.snowDate}} at {{snowData.snowTime}}.
+        {% else %}
+            No data!
+        {% endif %}
+        </body>
+    </html>
