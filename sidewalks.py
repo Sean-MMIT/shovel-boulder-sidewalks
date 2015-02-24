@@ -1,6 +1,7 @@
 from flask import Flask
 import requests
 from bs4 import BeautifulSoup
+import re
 app = Flask(__name__)
 
 @app.route("/")
@@ -10,7 +11,11 @@ def returnSnow():
 
 	snowReportSoup = BeautifulSoup(snowReportResponse.text)
 
-	return snowReportSoup.text
+	lastSnowReport = snowReportSoup.find(text=re.compile(r'Snow'))
+
+	return lastSnowReport
 
 if __name__ == "__main__":
     app.run()
+
+
