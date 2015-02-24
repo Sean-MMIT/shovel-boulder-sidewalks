@@ -13,7 +13,7 @@ def index():
 
 def returnLastSnowDateAndTime():
     snowReportResponse = requests.get('http://www.nws.noaa.gov/data/obhistory/KBDU.html')
-    forecastResponse = requests.get('https://api.forecast.io/forecast/a1dcd3de7338008cc494d5677bcee08e/40.04,105.23')
+    #forecastResponse = requests.get('https://api.forecast.io/forecast/a1dcd3de7338008cc494d5677bcee08e/40.04,105.23')
     snowReportSoup = BeautifulSoup(snowReportResponse.text)
     lastSnowReport = snowReportSoup.find(text=re.compile(r'Snow'))
     snowRow = lastSnowReport.parent.parent
