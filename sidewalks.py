@@ -13,9 +13,11 @@ def returnSnow():
 
 	lastSnowReport = snowReportSoup.find(text=re.compile(r'Snow'))
 
-	return lastSnowReport
+	snowRow = lastSnowReport.parent.parent
+	snowDate = snowRow.find("td").string
+	snowTime = snowRow.find(text=re.compile(r'..:..')).string
+
+	return lastSnowReport + " was reported on " + snowDate + " at " + snowTime
 
 if __name__ == "__main__":
     app.run()
-
-
