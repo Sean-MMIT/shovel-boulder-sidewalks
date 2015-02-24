@@ -1,15 +1,16 @@
-    <!DOCTYPE html>
-    <html>
-        <head>
-            <meta charset=utf-8 />
-            <title></title>
-            <link rel="stylesheet" type="text/css" media="screen" href="css/master.css" />
-        </head>
-        <body>
-        {% if snowData %}
-            {{snowData.lastSnowReport}} was last reported on the {{snowData.snowDate}} at {{snowData.snowTime}}.
-        {% else %}
-            No data!
-        {% endif %}
-        </body>
-    </html>
+{% extends "layout.html" %}
+{% block content %}
+{% if snowData %}
+    <h1>{{snowData.lastSnowReport}} was last reported on the {{snowData.snowDate}} at {{snowData.snowTime}}.</h1>
+{% else %}
+    No data!
+{% endif %}
+
+<p>
+    You have 24 hours after this time to clear the snow and ice from your sidewalks or you may face a fine and jail time.
+</p>
+
+<p>
+    You can find more information about your duty as a citizen at <a href="https://bouldercolorado.gov/pages/sidewalk-snow-removal"> the City of Boulder website.</a>  
+</p>
+{% endblock %}

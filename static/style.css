@@ -1,0 +1,27 @@
+body {
+    color: white;
+    background-color: black;
+    text-align:center;
+    margin: 0px 5% 0px 5%;
+}
+
+a:link {
+    color: white;
+}
+a:visited {
+    color: rgb(200,200,200);
+}
+a:hover {
+    color: white;
+}
+a:active{
+    color: white;
+}
+
+footer {
+    position:fixed;
+    right:25px;
+    bottom:25px;
+    text-align:center;
+    font-size:80%
+}
