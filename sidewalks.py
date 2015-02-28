@@ -3,6 +3,7 @@ from flask import render_template
 import requests
 from bs4 import BeautifulSoup
 import re
+from datetime import datetime
 app = Flask(__name__)
 app.debug = True
 
@@ -17,9 +18,12 @@ def returnLastSnowDateAndTime():
     snowReportSoup = BeautifulSoup(snowReportResponse.text)
     lastSnowReport = snowReportSoup.find(text=re.compile(r'Snow'))
     snowRow = lastSnowReport.parent.parent
-    snowDate = snowRow.find("td").string
-    snowTime = snowRow.find(text=re.compile(r'..:..')).string
-    return { 'lastSnowReport':lastSnowReport, 'snowDate':ord(snowDate), 'snowTime':snowTime }
+    snowDateStr = snowRow.find("td").string
+    #TODO: Capture date properly and adjust forecast based on calendar
+    snowTimeStr = snowRow.find(text=re.compile(r'..:..')).string
+    snowTimeTup = datetime.strptime( snowTimeStr, "%H:%M")
+    snowTime = snowTimeTup.strftime("%r")
+    return { 'lastSnowReport':lastSnowReport, 'snowDate':ord(snowDateStr), 'snowTime':snowTime }
 
 def ord(n):
     n = int(n)
